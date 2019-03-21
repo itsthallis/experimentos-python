@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Frontend Produtos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button type="button" @click="get_produtos()">Pegar produtos</button>
+        <p v-for="produto in produtos">[[ produto.nome+', '+produto.preco ]]</p>
+    </div>
+    <script>
+    store
+        new Vue({
+            delimiters: ['[[',']]'],
+            el: '#app',
+            data: {
+                produtos: []
+            },
+            methods: {
+                get_produtos: function() {
+                    let self = this
+                    axios.get('http://localhost:5000/api/produtos').then(function(result) {
+                        self.produtos = result.data
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
