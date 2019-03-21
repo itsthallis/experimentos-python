@@ -19,7 +19,6 @@ def home():
 def produtos():
     try:
         with conn.cursor() as cursor:
-            # Read a single record
             sql = "SELECT * FROM produtos"
             cursor.execute(sql)
             result = cursor.fetchall()

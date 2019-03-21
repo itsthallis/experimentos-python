@@ -15,7 +15,6 @@
         <p v-for="produto in produtos">[[ produto.nome+', '+produto.preco ]]</p>
     </div>
     <script>
-    store
         new Vue({
             delimiters: ['[[',']]'],
             el: '#app',
@@ -25,7 +24,7 @@
             methods: {
                 get_produtos: function() {
                     let self = this
-                    axios.get('http://localhost:5000/api/produtos').then(function(result) {
+                    axios.get('http://127.0.0.1:5000/api/produtos').then(function(result) {
                         self.produtos = result.data
                     })
                 }
